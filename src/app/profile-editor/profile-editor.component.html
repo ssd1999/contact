@@ -1,0 +1,55 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  
+    <br />
+    <img src="https://www.w3schools.com/images/w3schools_green.jpg" alt="W3Schools.com">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName" required> 
+    <!-- <input type="Name" placeholder="Name" size="60" minlength="3" maxlength="64"/> -->
+  
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+
+    <label for="company">Company: </label>
+    <input id="company" type="text" formControlName="company" required>
+    
+
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email" required>
+  
+    <div formGroupName="address">
+      <h3>Address</h3>
+  
+      <label for="street">Street: </label>
+      <input id="street" type="text" formControlName="street">
+  
+      <label for="city">City: </label>
+      <input id="city" type="text" formControlName="city">
+  
+      <label for="state">State: </label>
+      <input id="state" type="text" formControlName="state">
+  
+      <label for="zip">Zip Code: </label>
+      <input id="zip"type="text" formControlName="zip">
+    </div>
+  
+   <div formArrayName="add phone number">
+      <!-- <h2>Phone Number</h2> -->
+      <button type="button" (click)="addAlias()">+ Add phone number</button>
+  
+     <div *ngFor="let alias of aliases.controls; let i=index">
+         
+        <label for="alias-{{ i }}">Phone Number:</label>
+        <input id="alias-{{ i }}" type="text" [formControlName]="i">
+      </div> 
+    </div>
+    <button type="submit"> Submit</button>
+  </form>
+  
+  <hr>
+
+  <button type="button" (click)="updateProfile()"> Update </button>
+
+  
+  
+  
+  
